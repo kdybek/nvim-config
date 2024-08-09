@@ -58,8 +58,8 @@ local function cmp_setup()
 end
 
 local function mason_setup()
-    require("mason").setup()
-    require("mason-lspconfig").setup({
+    require('mason').setup()
+    require('mason-lspconfig').setup({
         ensure_installed = { 'ast_grep', 'harper_ls', 'lua_ls', 'clangd', 'cmake', 'glsl_analyzer' },
         automatic_installation = true,
     })
@@ -78,7 +78,7 @@ local function lsp_setup()
                     globals = { 'vim', 'use' },
                 },
                 workspace = {
-                    library = vim.api.nvim_get_runtime_file("", true),
+                    library = vim.api.nvim_get_runtime_file('', true),
                     checkThirdParty = false,  -- Avoid prompting about third-party libraries
                 },
                 telemetry = {
@@ -88,29 +88,17 @@ local function lsp_setup()
         },
         capabilities = capabilities,
     })
-
-    require('lspconfig').clangd.setup({
-        cmd = {
-            'clangd',
-            '--background-index',
-            '--clang-tidy',
-            '--function-arg-placeholders'
-        },
-        filetypes = { 'c', 'cpp', 'h', 'hpp', 'hh', 'objc', 'objcpp' },
-        root_dir = require('lspconfig').util.root_pattern('compile_commands.json', '.git'),
-    })
-
-    -- Generate compile_commands.json
-    vim.cmd [[let g:cmake_link_compile_commands = 1]]
+    require('lspconfig').clangd.setup({})
+    require('lspconfig').cmake.setup({})
 end
 
 local function nvim_tree_setup()
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
 
-    require("nvim-tree").setup({
+    require('nvim-tree').setup({
         sort = {
-            sorter = "case_sensitive",
+            sorter = 'case_sensitive',
         },
         view = {
             width = 50,
@@ -124,9 +112,16 @@ local function nvim_tree_setup()
     })
 end
 
+local function vim_cmake_setup()
+    -- Generate compile_commands.json
+    vim.cmd [[let g:cmake_link_compile_commands = 1]]
+    vim.cmd [[let g:cmake_build_dir_location = './build']]
+end
+
 treesitter_setup()
 cmp_setup()
 mason_setup()
 lsp_setup()
 nvim_tree_setup()
+vim_cmake_setup()
 
