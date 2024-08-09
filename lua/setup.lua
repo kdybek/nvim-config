@@ -129,3 +129,4 @@ cmp_setup()
 mason_setup()
 lsp_setup()
 nvim_tree_setup()
+

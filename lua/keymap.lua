@@ -40,3 +40,4 @@ nkeymap('<leader>cb', ':CMakeBuild<cr>')
 nkeymap('<leader>cc', ':CMakeClean<cr>')
 nkeymap('<leader>cq', ':CMakeClose<cr>')
 nkeymap('<leader>cr', ':CMakeRun ')
+

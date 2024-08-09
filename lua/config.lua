@@ -44,3 +44,4 @@ end
 vim.cmd [[colorscheme molokai]]
 
 vim.g.mapleader = ','
+
