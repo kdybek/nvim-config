@@ -1,0 +1,14 @@
+# Ignore swap files, backup files, and undo files
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+*.old
+*.un~
+*.undo
+
+# Ignore compiled files
+plugged/
+node_modules/
+
