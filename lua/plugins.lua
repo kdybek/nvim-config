@@ -13,7 +13,8 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
-    use 'tomasr/molokai'
+
+    -- Greeter
     use {
         'goolord/alpha-nvim',
         requires = { 'nvim-tree/nvim-web-devicons' },
@@ -21,8 +22,8 @@ return require('packer').startup(function(use)
             require'alpha'.setup(require'alpha.themes.startify'.config)
             local startify = require('alpha.themes.startify')
             startify.section.top_buttons.val = {
-                startify.button('e', 'New File', ':ene <bar> startinsert <cr>'),
-                startify.button('v', 'Neovim Config', ':e C:/Users/admin/AppData/Local/nvim/init.lua <cr>'),
+                startify.button('e', 'New File', ':ene<bar>startinsert<cr>'),
+                startify.button('v', 'Neovim Config', ':e C:/Users/admin/AppData/Local/nvim/init.lua<cr>'),
             }
         end
     }
@@ -55,6 +56,10 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } },
     }
     use 'cdelledonne/vim-cmake'
+    
+    -- Color schemes
+    use 'tomasr/molokai'
+    use 'rebelot/kanagawa.nvim'
 
     if packer_bootstrap then
         require('packer').sync()

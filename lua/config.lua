@@ -41,7 +41,5 @@ for k, v in pairs(config) do
     vim.opt[k] = v
 end
 
-vim.cmd [[colorscheme molokai]]
-
 vim.g.mapleader = ','
 

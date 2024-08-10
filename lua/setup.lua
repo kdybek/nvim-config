@@ -16,8 +16,11 @@ local function treesitter_setup()
         },
         modules = {},
     })
+
+    -- Folding
     vim.opt.foldmethod = 'expr'
     vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+    vim.opt.foldcolumn = '2'
 end
 
 local function cmp_setup()
@@ -112,10 +115,23 @@ local function nvim_tree_setup()
     })
 end
 
+local function floaterm_setup()
+    vim.cmd [[let g:floaterm_wintype = 'split']]
+    vim.cmd [[let g:floaterm_height = 0.3]]
+end
+
 local function vim_cmake_setup()
     -- Generate compile_commands.json
     vim.cmd [[let g:cmake_link_compile_commands = 1]]
     vim.cmd [[let g:cmake_build_dir_location = './build']]
+end
+
+local function colorscheme_setup()
+    require('kanagawa').setup({
+        transparent = true,
+    })
+
+    vim.cmd [[colorscheme kanagawa-wave]]
 end
 
 treesitter_setup()
@@ -123,5 +139,7 @@ cmp_setup()
 mason_setup()
 lsp_setup()
 nvim_tree_setup()
+floaterm_setup()
 vim_cmake_setup()
+colorscheme_setup()
 
