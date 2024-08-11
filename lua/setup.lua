@@ -63,15 +63,16 @@ end
 local function mason_setup()
     require('mason').setup()
     require('mason-lspconfig').setup({
-        ensure_installed = { 'ast_grep', 'harper_ls', 'lua_ls', 'clangd', 'cmake', 'glsl_analyzer' },
+        ensure_installed = { 'lua_ls', 'clangd', 'cmake' },
         automatic_installation = true,
     })
 end
 
 local function lsp_setup()
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local lspconfig = require('lspconfig')
 
-    require('lspconfig').lua_ls.setup({
+    lspconfig.lua_ls.setup({
         settings = {
             Lua = {
                 runtime = {
@@ -91,8 +92,12 @@ local function lsp_setup()
         },
         capabilities = capabilities,
     })
-    require('lspconfig').clangd.setup({})
-    require('lspconfig').cmake.setup({})
+    lspconfig.clangd.setup({
+        capabilities = capabilities,
+    })
+    lspconfig.cmake.setup({
+        capabilities = capabilities,
+    })
 end
 
 local function nvim_tree_setup()
