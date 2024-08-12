@@ -56,7 +56,8 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } },
     }
     use 'cdelledonne/vim-cmake'
-    
+    use 'stevearc/conform.nvim'
+
     -- Color schemes
     use 'tomasr/molokai'
     use 'rebelot/kanagawa.nvim'

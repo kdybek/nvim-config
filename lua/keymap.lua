@@ -35,9 +35,12 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
+-- CMake
 nkeymap('<leader>cg', ':CMakeGenerate<cr>')
 nkeymap('<leader>cb', ':CMakeBuild<cr>')
 nkeymap('<leader>cc', ':CMakeClean<cr>')
 nkeymap('<leader>cq', ':CMakeClose<cr>')
 nkeymap('<leader>cr', ':CMakeRun ')
 
+-- Misc
+nkeymap('<leader>s', ':w<cr>')

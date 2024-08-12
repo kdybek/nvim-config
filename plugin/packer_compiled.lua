@@ -100,6 +100,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\admin\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["conform.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\admin\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\conform.nvim",
+    url = "https://github.com/stevearc/conform.nvim"
+  },
   ["kanagawa.nvim"] = {
     loaded = true,
     path = "C:\\Users\\admin\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\kanagawa.nvim",

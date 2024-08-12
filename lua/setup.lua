@@ -1,3 +1,10 @@
+local function filetype_setup()
+    vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+        pattern = '*.hlsl',
+        command = 'set filetype=hlsl'
+    })
+end
+
 local function treesitter_setup()
     require('nvim-treesitter.configs').setup({
         ensure_installed = { 'c', 'cpp', 'python', 'lua', 'hlsl', 'glsl', 'cmake' },
@@ -36,8 +43,8 @@ local function cmp_setup()
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
         }, {
-                { name = 'buffer' },
-            })
+            { name = 'buffer' },
+        })
     })
 
     -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
@@ -54,8 +61,8 @@ local function cmp_setup()
         sources = cmp.config.sources({
             { name = 'path' }
         }, {
-                { name = 'cmdline' }
-            }),
+            { name = 'cmdline' }
+        }),
         matching = { disallow_symbol_nonprefix_matching = false }
     })
 end
@@ -70,7 +77,8 @@ end
 
 local function lsp_setup()
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
-    local lspconfig = require('lspconfig')
+    local lspconfig = require 'lspconfig'
+    local configs = require 'lspconfig.configs'
 
     lspconfig.lua_ls.setup({
         settings = {
@@ -83,7 +91,7 @@ local function lsp_setup()
                 },
                 workspace = {
                     library = vim.api.nvim_get_runtime_file('', true),
-                    checkThirdParty = false,  -- Avoid prompting about third-party libraries
+                    checkThirdParty = false, -- Avoid prompting about third-party libraries
                 },
                 telemetry = {
                     enable = false,
@@ -97,6 +105,34 @@ local function lsp_setup()
     })
     lspconfig.cmake.setup({
         capabilities = capabilities,
+    })
+
+    if not configs.hlsl_ls then
+        configs.hlsl_ls = {
+            default_config = {
+                cmd = { 'shader-ls', 'lsp' },
+                root_dir = lspconfig.util.root_pattern('.git'),
+                filetypes = { 'hlsl' },
+                settings = {},
+            },
+        }
+    end
+    lspconfig.hlsl_ls.setup({
+        capabilities = capabilities,
+    })
+end
+
+local function conform_setup()
+    require('conform').setup({
+        formatters_by_ft = {
+            lua = { 'stylua' },
+            c = { 'clang-format' },
+            cpp = { 'clang-format' },
+        },
+        format_on_save = {
+            timeout_ms = 500,
+            lsp_format = 'fallback',
+        },
     })
 end
 
@@ -129,6 +165,7 @@ local function vim_cmake_setup()
     -- Generate compile_commands.json
     vim.cmd [[let g:cmake_link_compile_commands = 1]]
     vim.cmd [[let g:cmake_build_dir_location = './build']]
+    vim.cmd("let g:cmake_generate_options = ['-G Ninja']")
 end
 
 local function colorscheme_setup()
@@ -139,12 +176,13 @@ local function colorscheme_setup()
     vim.cmd [[colorscheme kanagawa-wave]]
 end
 
+filetype_setup()
 treesitter_setup()
 cmp_setup()
 mason_setup()
 lsp_setup()
+conform_setup()
 nvim_tree_setup()
 floaterm_setup()
 vim_cmake_setup()
 colorscheme_setup()
-
