@@ -80,6 +80,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\admin\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
+  ["auto-save.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\admin\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\auto-save.nvim",
+    url = "https://github.com/pocco81/auto-save.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "C:\\Users\\admin\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-buffer",
@@ -104,6 +109,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\admin\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\conform.nvim",
     url = "https://github.com/stevearc/conform.nvim"
+  },
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "C:\\Users\\admin\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\copilot.vim",
+    url = "https://github.com/github/copilot.vim"
   },
   ["kanagawa.nvim"] = {
     loaded = true,

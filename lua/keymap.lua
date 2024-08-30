@@ -6,9 +6,6 @@ local function nkeymap(key, map)
     keymap('n', key, map, opts)
 end
 
--- Formatting
-nkeymap('<leader>fo', 'mzgg=G`z')
-
 -- LSP
 nkeymap('gd', ':lua vim.lsp.buf.definition()<cr>')
 nkeymap('gD', ':lua vim.lsp.buf.declaration()<cr>')
@@ -20,13 +17,13 @@ nkeymap('gt', ':lua vim.lsp.buf.type_definition()<cr>')
 nkeymap('K', ':lua vim.lsp.buf.hover()<cr>')
 nkeymap('<c-k>', ':lua vim.lsp.buf.signature_help()<cr>')
 nkeymap('<leader>af', ':lua vim.lsp.buf.code_action()<cr>')
-nkeymap('<leader>r', ':lua vim.lsp.buf.rename()<cr>')
+nkeymap('<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
 
 -- Floaterm
-nkeymap('<leader>t', ':FloatermToggle<cr>')
+nkeymap('<leader>tt', ':FloatermToggle<cr>')
 
 -- NvimTree
-nkeymap('<leader>n', ':NvimTreeOpen<cr>')
+nkeymap('<leader>nt', ':NvimTreeToggle<cr>')
 
 -- Telescope
 local builtin = require('telescope.builtin')
@@ -42,5 +39,5 @@ nkeymap('<leader>cc', ':CMakeClean<cr>')
 nkeymap('<leader>cq', ':CMakeClose<cr>')
 nkeymap('<leader>cr', ':CMakeRun ')
 
--- Misc
-nkeymap('<leader>s', ':w<cr>')
+-- Formatting
+nkeymap('<leader>fo', ':lua require("conform").format({lsp_format = "fallback",})<cr>')

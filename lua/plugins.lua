@@ -1,8 +1,8 @@
 local ensure_packer = function()
     local fn = vim.fn
-    local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
     if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
         vim.cmd [[packadd packer.nvim]]
         return true
     end
@@ -19,7 +19,7 @@ return require('packer').startup(function(use)
         'goolord/alpha-nvim',
         requires = { 'nvim-tree/nvim-web-devicons' },
         config = function()
-            require'alpha'.setup(require'alpha.themes.startify'.config)
+            require 'alpha'.setup(require 'alpha.themes.startify'.config)
             local startify = require('alpha.themes.startify')
             startify.section.top_buttons.val = {
                 startify.button('e', 'New File', ':ene<bar>startinsert<cr>'),
@@ -57,6 +57,8 @@ return require('packer').startup(function(use)
     }
     use 'cdelledonne/vim-cmake'
     use 'stevearc/conform.nvim'
+    use 'github/copilot.vim'
+    use 'pocco81/auto-save.nvim'
 
     -- Color schemes
     use 'tomasr/molokai'
@@ -66,4 +68,3 @@ return require('packer').startup(function(use)
         require('packer').sync()
     end
 end)
-

@@ -70,7 +70,7 @@ end
 local function mason_setup()
     require('mason').setup()
     require('mason-lspconfig').setup({
-        ensure_installed = { 'lua_ls', 'clangd', 'cmake' },
+        ensure_installed = { 'lua_ls', 'clangd', 'cmake', 'yamlls' },
         automatic_installation = true,
     })
 end
@@ -106,6 +106,9 @@ local function lsp_setup()
     lspconfig.cmake.setup({
         capabilities = capabilities,
     })
+    lspconfig.yamlls.setup({
+        capabilities = capabilities,
+    })
 
     if not configs.hlsl_ls then
         configs.hlsl_ls = {
@@ -126,12 +129,7 @@ local function conform_setup()
     require('conform').setup({
         formatters_by_ft = {
             lua = { 'stylua' },
-            c = { 'clang-format' },
-            cpp = { 'clang-format' },
-        },
-        format_on_save = {
-            timeout_ms = 500,
-            lsp_format = 'fallback',
+            yaml = { 'yamlfix' },
         },
     })
 end
@@ -168,6 +166,10 @@ local function vim_cmake_setup()
     vim.cmd("let g:cmake_generate_options = ['-G Ninja']")
 end
 
+local function autosave_setup()
+    require('auto-save').setup()
+end
+
 local function colorscheme_setup()
     require('kanagawa').setup({
         transparent = true,
@@ -185,4 +187,5 @@ conform_setup()
 nvim_tree_setup()
 floaterm_setup()
 vim_cmake_setup()
+autosave_setup()
 colorscheme_setup()
