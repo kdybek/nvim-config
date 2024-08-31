@@ -175,11 +175,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\admin\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["vim-cmake"] = {
-    loaded = true,
-    path = "C:\\Users\\admin\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-cmake",
-    url = "https://github.com/cdelledonne/vim-cmake"
-  },
   ["vim-floaterm"] = {
     loaded = true,
     path = "C:\\Users\\admin\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-floaterm",

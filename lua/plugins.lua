@@ -55,7 +55,6 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } },
     }
-    use 'cdelledonne/vim-cmake'
     use 'stevearc/conform.nvim'
     use 'github/copilot.vim'
     use 'pocco81/auto-save.nvim'

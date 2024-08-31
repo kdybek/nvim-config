@@ -1,4 +1,5 @@
 require('config')
+require('project-config')
 require('plugins')
 require('keymap')
 require('setup')

@@ -159,13 +159,6 @@ local function floaterm_setup()
     vim.cmd [[let g:floaterm_height = 0.3]]
 end
 
-local function vim_cmake_setup()
-    -- Generate compile_commands.json
-    vim.cmd [[let g:cmake_link_compile_commands = 1]]
-    vim.cmd [[let g:cmake_build_dir_location = './build']]
-    vim.cmd("let g:cmake_generate_options = ['-G Ninja']")
-end
-
 local function autosave_setup()
     require('auto-save').setup()
 end
@@ -186,6 +179,5 @@ lsp_setup()
 conform_setup()
 nvim_tree_setup()
 floaterm_setup()
-vim_cmake_setup()
 autosave_setup()
 colorscheme_setup()
