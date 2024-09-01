@@ -177,6 +177,29 @@ local function colorscheme_setup()
     vim.cmd [[colorscheme kanagawa-wave]]
 end
 
+local function external_file_protection_setup()
+    local function aux()
+        local allowed_dirs = {
+            vim.fn.getcwd(),
+            vim.fn.stdpath('config'),
+        }
+        local current_file = vim.fn.expand('%:p')
+
+        for _, dir in ipairs(allowed_dirs) do
+            if current_file:match('^' .. dir) then
+                return
+            end
+        end
+
+        vim.bo.modifiable = false
+    end
+
+    vim.api.nvim_create_autocmd('BufReadPost', {
+        pattern = '*',
+        callback = aux,
+    })
+end
+
 filetype_setup()
 treesitter_setup()
 cmp_setup()
@@ -188,3 +211,4 @@ floaterm_setup()
 autosave_setup()
 cmake_setup()
 colorscheme_setup()
+external_file_protection_setup()
