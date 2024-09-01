@@ -38,10 +38,6 @@ nkeymap('<leader>cb', ':CMakeBuild<cr>')
 nkeymap('<leader>cr', ':CMakeRun<cr>')
 nkeymap('<leader>cd', ':CMakeDebug<cr>')
 nkeymap('<leader>cc', ':CMakeClean<cr>')
-nkeymap('<leader>sex', ':SetExecutable ')
-nkeymap('<leader>sbd', ':SetBuildDir ')
-nkeymap('<leader>sbc', ':SetBuildConfig ')
-nkeymap('<leader>sec', ':SetExportCompileCommands ')
 
 -- Formatting
 nkeymap('<leader>fo', ':lua require("conform").format({lsp_format = "fallback",})<cr>')
