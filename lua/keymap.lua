@@ -33,33 +33,15 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 -- CMake
-local project_config = require('project-config')
-
-local cmake_generate_cmd = 'cmake -G "Ninja Multi-Config" -S . -B "' ..
-    project_config.build_dir ..
-    '" -DCMAKE_EXPORT_COMPILE_COMMANDS=' .. (project_config.export_compile_commands and 'ON' or 'OFF')
-
-if project_config.export_compile_commands then
-    cmake_generate_cmd = cmake_generate_cmd ..
-        ' && del compile_commands.json 2>nul && mklink compile_commands.json "' ..
-        project_config.build_dir .. '/compile_commands.json"'
-end
-
-local cmake_build_cmd = 'cmake --build "' ..
-    project_config.build_dir .. '" --config "' .. project_config.build_config .. '"'
-
-local cmake_clean_cmd = 'rmdir /s /q "' .. project_config.build_dir .. '"'
-
-local target_path = '".\\' ..
-    project_config.build_dir .. '\\' .. project_config.build_config .. '\\' .. project_config.executable .. '"'
-
-local debugger_cmd = 'lldb -o "r" -o "q" -- ' .. target_path
-
-nkeymap('<leader>cg', ':! ' .. cmake_generate_cmd .. '<cr>')
-nkeymap('<leader>cb', ':! ' .. cmake_generate_cmd .. ' && ' .. cmake_build_cmd .. '<cr>')
-nkeymap('<leader>cr', ':! ' .. cmake_generate_cmd .. ' && ' .. cmake_build_cmd .. ' && ' .. target_path .. '<cr>')
-nkeymap('<leader>cd', ':! ' .. cmake_generate_cmd .. ' && ' .. cmake_build_cmd .. ' && ' .. debugger_cmd .. '<cr>')
-nkeymap('<leader>cc', ':! ' .. cmake_clean_cmd .. '<cr>')
+nkeymap('<leader>cg', ':CMakeGenerate<cr>')
+nkeymap('<leader>cb', ':CMakeBuild<cr>')
+nkeymap('<leader>cr', ':CMakeRun<cr>')
+nkeymap('<leader>cd', ':CMakeDebug<cr>')
+nkeymap('<leader>cc', ':CMakeClean<cr>')
+nkeymap('<leader>sex', ':SetExecutable ')
+nkeymap('<leader>sbd', ':SetBuildDir ')
+nkeymap('<leader>sbc', ':SetBuildConfig ')
+nkeymap('<leader>sec', ':SetExportCompileCommands ')
 
 -- Formatting
 nkeymap('<leader>fo', ':lua require("conform").format({lsp_format = "fallback",})<cr>')

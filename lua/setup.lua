@@ -163,6 +163,10 @@ local function autosave_setup()
     require('auto-save').setup()
 end
 
+local function cmake_setup()
+    require('cmake').setup()
+end
+
 local function colorscheme_setup()
     require('kanagawa').setup({
         transparent = true,
@@ -180,4 +184,5 @@ conform_setup()
 nvim_tree_setup()
 floaterm_setup()
 autosave_setup()
+cmake_setup()
 colorscheme_setup()
