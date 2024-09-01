@@ -19,7 +19,7 @@ local function generate_commands()
     local target_path = '".\\' ..
         project_config.build_dir .. '\\' .. project_config.build_config .. '\\' .. project_config.executable .. '"'
 
-    local debugger_cmd = 'lldb -o "r" -o "q" -- ' .. target_path
+    local debugger_cmd = 'lldb -o "run" -o "quit" -- ' .. target_path
 
     local cmake_clean_cmd = 'rmdir /s /q "' .. project_config.build_dir .. '" && del compile_commands.json 2>nul'
 
