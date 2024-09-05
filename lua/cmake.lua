@@ -46,7 +46,7 @@ local function generate_commands()
     vim.api.nvim_create_user_command('CMakeGenerate', cmake_generate, {})
     vim.api.nvim_create_user_command('CMakeBuild', cmake_build, {})
     vim.api.nvim_create_user_command('CMakeRun', cmake_run, {})
-    vim.api.nvim_create_user_command('CMakeDebug', cmake_debug, {})
+    vim.api.nvim_create_user_command('CMakeRunDebug', cmake_debug, {})
     vim.api.nvim_create_user_command('CMakeClean', cmake_clean, {})
 end
 

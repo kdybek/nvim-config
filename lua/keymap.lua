@@ -36,7 +36,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 nkeymap('<leader>cg', ':CMakeGenerate<cr>')
 nkeymap('<leader>cb', ':CMakeBuild<cr>')
 nkeymap('<leader>cr', ':CMakeRun<cr>')
-nkeymap('<leader>cd', ':CMakeDebug<cr>')
+nkeymap('<leader>cd', ':CMakeRunDebug<cr>')
 nkeymap('<leader>cc', ':CMakeClean<cr>')
 
 -- Formatting

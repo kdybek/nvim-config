@@ -1,7 +1,7 @@
 local function filetype_setup()
     vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-        pattern = '*.hlsl',
-        command = 'set filetype=hlsl'
+        pattern = { '*.hlsl', '*.hlsli' },
+        command = 'set filetype=hlsl',
     })
 end
 
@@ -178,25 +178,23 @@ local function colorscheme_setup()
 end
 
 local function external_file_protection_setup()
-    local function aux()
-        local allowed_dirs = {
-            vim.fn.getcwd(),
-            vim.fn.stdpath('config'),
-        }
-        local current_file = vim.fn.expand('%:p')
-
-        for _, dir in ipairs(allowed_dirs) do
-            if current_file:match('^' .. dir) then
-                return
-            end
-        end
-
-        vim.bo.modifiable = false
-    end
-
     vim.api.nvim_create_autocmd('BufReadPost', {
         pattern = '*',
-        callback = aux,
+        callback = function()
+            local allowed_dirs = {
+                vim.fn.getcwd(),
+                vim.fn.stdpath('config'),
+            }
+            local current_file = vim.fn.expand('%:p')
+
+            for _, dir in ipairs(allowed_dirs) do
+                if current_file:match('^' .. dir .. '\\') then
+                    return
+                end
+            end
+
+            vim.bo.modifiable = false
+        end,
     })
 end
 

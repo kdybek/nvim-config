@@ -23,7 +23,7 @@ return require('packer').startup(function(use)
             local startify = require('alpha.themes.startify')
             startify.section.top_buttons.val = {
                 startify.button('e', 'New File', ':ene<bar>startinsert<cr>'),
-                startify.button('v', 'Neovim Config', ':e C:/Users/admin/AppData/Local/nvim/init.lua<cr>'),
+                startify.button('v', 'Neovim Config', ':e ' .. vim.fn.stdpath('config') .. '\\init.lua<cr>'),
             }
         end
     }
