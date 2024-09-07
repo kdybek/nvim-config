@@ -1,6 +1,6 @@
 local keymap = vim.api.nvim_set_keymap
 
-local opts = { noremap = true }
+local opts = { noremap = true, silent = false }
 
 local function nkeymap(key, map)
     keymap('n', key, map, opts)
@@ -41,3 +41,28 @@ nkeymap('<leader>cc', ':CMakeClean<cr>')
 
 -- Formatting
 nkeymap('<leader>fo', ':lua require("conform").format({lsp_format = "fallback",})<cr>')
+
+-- Misc
+function SwitchSourceHeader()
+    local extension = vim.fn.expand('%:e')
+
+    if extension == 'h' then
+        if vim.fn.filereadable(vim.fn.expand('%:r') .. '.cpp') == 1 then
+            vim.api.nvim_command('edit %:r.cpp')
+        elseif vim.fn.filereadable(vim.fn.expand('%:r') .. '.c') == 1 then
+            vim.api.nvim_command('edit %:r.c')
+        else
+            print('No corresponding .cpp or .c file found')
+        end
+    elseif extension == 'cpp' or extension == 'c' then
+        if vim.fn.filereadable(vim.fn.expand('%:r') .. '.h') == 1 then
+            vim.api.nvim_command('edit %:r.h')
+        else
+            print('No corresponding .h file found')
+        end
+    else
+        print('Not a .cpp, .c or .h file')
+    end
+end
+
+nkeymap('<leader>sh', ':lua SwitchSourceHeader()<cr>')
