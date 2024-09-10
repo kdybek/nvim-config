@@ -19,15 +19,10 @@ local function treesitter_setup()
             enable = true,
         },
         fold = {
-            enable = true,
+            enable = false,
         },
         modules = {},
     })
-
-    -- Folding
-    vim.opt.foldmethod = 'expr'
-    vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-    vim.opt.foldcolumn = '2'
 end
 
 local function cmp_setup()
