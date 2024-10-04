@@ -170,6 +170,11 @@ local function colorscheme_setup()
     })
 
     vim.cmd [[colorscheme kanagawa-wave]]
+
+    vim.api.nvim_set_hl(0, 'SpellBad', { underline = true, sp = 'grey' })
+    vim.api.nvim_set_hl(0, 'SpellCap', { underline = true, sp = 'grey' })
+    vim.api.nvim_set_hl(0, 'SpellRare', { underline = true, sp = 'grey' })
+    vim.api.nvim_set_hl(0, 'SpellLocal', { underline = true, sp = 'grey' })
 end
 
 local function external_file_protection_setup()
