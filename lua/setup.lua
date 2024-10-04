@@ -67,7 +67,7 @@ end
 local function mason_setup()
     require('mason').setup()
     require('mason-lspconfig').setup({
-        ensure_installed = { 'lua_ls', 'clangd', 'cmake', 'yamlls' },
+        ensure_installed = { 'lua_ls', 'clangd', 'cmake', 'yamlls', 'matlab_ls' },
         automatic_installation = true,
     })
 end
@@ -104,6 +104,9 @@ local function lsp_setup()
         capabilities = capabilities,
     })
     lspconfig.yamlls.setup({
+        capabilities = capabilities,
+    })
+    lspconfig.matlab_ls.setup({
         capabilities = capabilities,
     })
 

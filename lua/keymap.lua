@@ -39,6 +39,9 @@ nkeymap('<leader>cr', ':CMakeRun<cr>')
 nkeymap('<leader>cd', ':CMakeRunDebug<cr>')
 nkeymap('<leader>cc', ':CMakeClean<cr>')
 
+-- Running scripts
+nkeymap('<leader>ro', ':!octave --silent --no-gui %<cr>')
+
 -- Formatting
 nkeymap('<leader>fo', ':lua require("conform").format({lsp_format = "fallback",})<cr>')
 
