@@ -188,10 +188,16 @@ local function external_file_protection_setup()
                 vim.fn.getcwd(),
                 vim.fn.stdpath('config'),
             }
-            local current_file = vim.fn.expand('%:p')
+
+            for i, dir in ipairs(allowed_dirs) do
+                local unixified_dir, _ = dir:gsub('\\', '/')
+                allowed_dirs[i] = unixified_dir
+            end
+
+            local current_file, _ = vim.fn.expand('%:p'):gsub('\\', '/')
 
             for _, dir in ipairs(allowed_dirs) do
-                if current_file:match('^' .. dir .. '\\') then
+                if current_file:match('^' .. dir .. '/') then
                     return
                 end
             end
