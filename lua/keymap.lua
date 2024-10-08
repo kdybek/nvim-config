@@ -39,6 +39,9 @@ nkeymap('<leader>cr', ':CMakeRun<cr>')
 nkeymap('<leader>cd', ':CMakeRunDebug<cr>')
 nkeymap('<leader>cc', ':CMakeClean<cr>')
 
+-- UndoTree
+nkeymap('<leader>ut', ':UndotreeToggle<cr> :UndotreeFocus<cr>')
+
 -- Running scripts
 nkeymap('<leader>ro', ':!octave --silent --no-gui %<cr>')
 

@@ -58,6 +58,7 @@ return require('packer').startup(function(use)
     use 'stevearc/conform.nvim'
     use 'github/copilot.vim'
     use 'pocco81/auto-save.nvim'
+    use 'mbbill/undotree'
 
     -- Color schemes
     use 'tomasr/molokai'

@@ -6,6 +6,7 @@ Dependencies that need to be installed separately:
 - Ripgrep
 - Python3
 - GNU Octave
+- GNU DiffUtils
 - Node.js
 - shader-language-server
 
