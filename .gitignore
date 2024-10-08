@@ -11,4 +11,4 @@
 # Ignore compiled files
 plugged/
 node_modules/
-
+plugin/

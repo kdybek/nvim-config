@@ -1,1 +1,1 @@
-vim.opt_local.path:prepend(vim.fn.getcwd() .. '\\src')
+vim.opt_local.path:prepend(vim.fn.getcwd() .. '/src')

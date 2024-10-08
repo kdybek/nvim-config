@@ -16,8 +16,8 @@ local function generate_commands()
     local cmake_build_cmd = 'cmake --build "' ..
         project_config.build_dir .. '" --config "' .. project_config.build_config .. '"'
 
-    local target_path = '".\\' ..
-        project_config.build_dir .. '\\' .. project_config.build_config .. '\\' .. project_config.executable .. '"'
+    local target_path = '"./' ..
+        project_config.build_dir .. '/' .. project_config.build_config .. '/' .. project_config.executable .. '"'
 
     local debugger_cmd = 'lldb -o "run" -o "quit" -- ' .. target_path
 
