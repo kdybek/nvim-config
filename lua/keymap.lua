@@ -72,3 +72,5 @@ function SwitchSourceHeader()
 end
 
 nkeymap('<leader>sh', ':lua SwitchSourceHeader()<cr>')
+keymap('n', '<leader>bw', 'A<enter>{<enter>}<esc>O<esc><leader>foi<tab>', { noremap = false, silent = false })
+keymap('n', '<leader>bn', 'A {<enter>}<esc>O<esc><leader>foi<tab>', { noremap = false, silent = false })
