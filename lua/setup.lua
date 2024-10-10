@@ -125,6 +125,10 @@ local function lsp_setup()
     })
 end
 
+local function telescope_setup()
+    require('telescope').setup()
+end
+
 local function conform_setup()
     require('conform').setup({
         formatters_by_ft = {
@@ -212,6 +216,7 @@ treesitter_setup()
 cmp_setup()
 mason_setup()
 lsp_setup()
+telescope_setup()
 conform_setup()
 nvim_tree_setup()
 floaterm_setup()
