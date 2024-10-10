@@ -126,7 +126,14 @@ local function lsp_setup()
 end
 
 local function telescope_setup()
-    require('telescope').setup()
+    require('telescope').setup({
+        defaults = {
+            file_ignore_patterns = {
+                "vendor/*", "build/*", "out/*", "bin/*", "lib/*", "deps/*",
+                "third_party/*", "third%-party/*", "thirdparty/*"
+            },
+        },
+    })
 end
 
 local function conform_setup()
