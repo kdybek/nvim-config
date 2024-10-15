@@ -53,21 +53,35 @@ function SwitchSourceHeader()
     local extension = vim.fn.expand('%:e')
 
     if extension == 'h' then
-        if vim.fn.filereadable(vim.fn.expand('%:r') .. '.cpp') == 1 then
-            vim.api.nvim_command('edit %:r.cpp')
-        elseif vim.fn.filereadable(vim.fn.expand('%:r') .. '.c') == 1 then
+        if vim.fn.filereadable(vim.fn.expand('%:r') .. '.c') == 1 then
             vim.api.nvim_command('edit %:r.c')
+        elseif vim.fn.filereadable(vim.fn.expand('%:r') .. '.cpp') == 1 then
+            vim.api.nvim_command('edit %:r.cpp')
         else
-            print('No corresponding .cpp or .c file found')
+            print('No corresponding .c or .cpp file found')
         end
-    elseif extension == 'cpp' or extension == 'c' then
+    elseif extension == 'c' then
         if vim.fn.filereadable(vim.fn.expand('%:r') .. '.h') == 1 then
             vim.api.nvim_command('edit %:r.h')
         else
             print('No corresponding .h file found')
         end
+    elseif extension == 'cpp' then
+        if vim.fn.filereadable(vim.fn.expand('%:r') .. '.hpp') == 1 then
+            vim.api.nvim_command('edit %:r.hpp')
+        elseif vim.fn.filereadable(vim.fn.expand('%:r') .. '.h') == 1 then
+            vim.api.nvim_command('edit %:r.h')
+        else
+            print('No corresponding .hpp or .h file found')
+        end
+    elseif extension == 'hpp' then
+        if vim.fn.filereadable(vim.fn.expand('%:r') .. '.cpp') == 1 then
+            vim.api.nvim_command('edit %:r.cpp')
+        else
+            print('No corresponding .cpp file found')
+        end
     else
-        print('Not a .cpp, .c or .h file')
+        print('Not a .c, .cpp, .h or .hpp file')
     end
 end
 
