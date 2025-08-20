@@ -139,8 +139,6 @@ end
 local function conform_setup()
     require('conform').setup({
         formatters_by_ft = {
-            lua = { 'stylua' },
-            yaml = { 'yamlfix' },
             python = { 'black', 'isort' },
         },
     })
