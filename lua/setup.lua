@@ -67,7 +67,7 @@ end
 local function mason_setup()
     require('mason').setup()
     require('mason-lspconfig').setup({
-        ensure_installed = { 'lua_ls', 'clangd', 'cmake', 'yamlls', 'matlab_ls' },
+        ensure_installed = { 'lua_ls', 'clangd', 'cmake', 'pylsp' },
         automatic_installation = true,
     })
 end
@@ -141,6 +141,7 @@ local function conform_setup()
         formatters_by_ft = {
             lua = { 'stylua' },
             yaml = { 'yamlfix' },
+            python = { 'black', 'isort' },
         },
     })
 end
@@ -238,6 +239,10 @@ local function external_file_protection_setup()
     })
 end
 
+local function magma_setup()
+    vim.g.magma_image_provider = "kitty"
+end
+
 filetype_setup()
 treesitter_setup()
 cmp_setup()
@@ -251,3 +256,4 @@ autosave_setup()
 cmake_setup()
 colorscheme_setup()
 external_file_protection_setup()
+magma_setup()
