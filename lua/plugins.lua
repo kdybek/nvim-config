@@ -59,7 +59,7 @@ return require('packer').startup(function(use)
     use 'github/copilot.vim'
     use 'pocco81/auto-save.nvim'
     use 'mbbill/undotree'
-    use { 'dccsillag/magma-nvim', build = ':UpdateRemotePlugins' }
+    use 'Vigemus/iron.nvim'
 
     -- Color schemes
     use 'tomasr/molokai'
